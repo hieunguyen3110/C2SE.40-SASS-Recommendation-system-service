@@ -1,5 +1,8 @@
 import pandas as pd
 import logging
+
+from response.ApiRespone import ApiResponse
+
 logging.basicConfig(level=logging.WARNING)
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -132,11 +135,20 @@ class DocumentRecommendationSystem:
         return top_document_ids
 
     @staticmethod
-    def update_csv_data(folder_path, new_docs_df, new_interactions_df):
+    def update_csv_data(folder_path, new_docs_df, new_interactions_df, update_docs_df=None):
         try:
             # Đọc file cũ
-            documents_df = pd.read_csv(f"{folder_path}/documents_train.csv")
-            ratings_df = pd.read_csv(f"{folder_path}/ratings_train.csv")
+            documents_df = pd.read_csv(f"{folder_path}/documents.csv")
+            ratings_df = pd.read_csv(f"{folder_path}/ratings.csv")
+
+            # ✅ Cập nhật các document đã tồn tại nếu có (từ update_docs_df)
+            if update_docs_df is not None and not update_docs_df.empty:
+                for _, row in update_docs_df.iterrows():
+                    doc_id = row['document_id']
+                    if doc_id in documents_df['document_id'].values:
+                        for col in ['title', 'category', 'content', 'popularity']:
+                            if col in row and pd.notna(row[col]):
+                                documents_df.loc[documents_df['document_id'] == doc_id, col] = row[col]
 
             # Nối dữ liệu mới vào DataFrame cũ
             updated_documents_df = pd.concat([documents_df, new_docs_df]).drop_duplicates(
@@ -145,8 +157,8 @@ class DocumentRecommendationSystem:
                 subset=['account_id', 'document_id']).reset_index(drop=True)
 
             # Ghi đè vào file CSV để lưu dữ liệu đã cập nhật
-            updated_documents_df.to_csv(f"{folder_path}/documents_train.csv", index=False)
-            updated_ratings_df.to_csv(f"{folder_path}/ratings_train.csv", index=False)
+            updated_documents_df.to_csv(f"{folder_path}/documents.csv", index=False)
+            updated_ratings_df.to_csv(f"{folder_path}/ratings.csv", index=False)
 
             print("Dữ liệu đã được thêm và cập nhật thành công vào file CSV.")
 
@@ -164,6 +176,14 @@ class DocumentRecommendationSystem:
             new_docs_df = pd.DataFrame(fixed_new_documents,columns=['document_id', 'title', 'category', 'content', 'popularity'])
             new_docs_df = new_docs_df.reindex(columns=self.document_data.columns, fill_value=None)
             self.document_data = pd.concat([self.document_data, new_docs_df]).drop_duplicates(subset='document_id').reset_index(drop=True)
+            #update document
+            for doc in update_document:
+                doc_id = doc["document_id"]
+                if doc_id in self.document_data['document_id'].values:
+                    self.document_data.loc[self.document_data['document_id'] == doc_id, 'popularity'] = doc["popularity"]
+
+            update_docs_df = pd.DataFrame([dict(doc) for doc in update_document],
+                                          columns=['document_id', 'title', 'category', 'content', 'popularity'])
 
             # Cập nhật user_mapping và interactions nếu có user mới
             fixed_new_interaction= [dict(interaction) for interaction in new_interactions]
@@ -177,9 +197,9 @@ class DocumentRecommendationSystem:
 
             # Thêm người dùng mới vào user_mapping
             for user in new_users:
-                if user.account_id not in self.user_mapping:
-                    self.lightfm_dataset.fit_partial(users=[user.account_id])
-                    self.user_mapping[user.account_id] = len(self.user_mapping)-1
+                if user["account_id"] not in self.user_mapping:
+                    self.lightfm_dataset.fit_partial(users=[user["account_id"]])
+                    self.user_mapping[user["account_id"]] = len(self.user_mapping)-1
 
 
             # Thêm người dùng và tài liệu mới vào dataset
@@ -209,14 +229,17 @@ class DocumentRecommendationSystem:
                 num_threads=4
             )
 
-            self.update_csv_data(folder_path=folder_path,new_docs_df=new_docs_df, new_interactions_df=new_interactions_df)
+            self.update_csv_data(folder_path=folder_path,
+                                 new_docs_df=new_docs_df,
+                                 new_interactions_df=new_interactions_df,
+                                 update_docs_df=update_docs_df)
 
             print(f"Item embeddings shape: {self.lightfm_model.item_embeddings.shape}")
             print(f"User embeddings shape: {self.lightfm_model.user_embeddings.shape}")
-
             print(f"Mô hình đã được cập nhật với {len(new_users)} người dùng và {len(new_documents)} tài liệu mới.")
 
         except Exception as e:
             print("exception: ",e)
+            return ApiResponse.error(message=f"Error {e}", code=400)
 
 
