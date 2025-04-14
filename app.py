@@ -27,9 +27,8 @@ input_handler = InputHandle(scaler)
 folder_path="./dataset/"
 
 rs= DocumentRecommendationSystem()
-documents_df=pd.read_csv(f"{folder_path}documents_train.csv")
-ratings_df=pd.read_csv(f"{folder_path}ratings_train.csv")
-documents_df=documents_df.drop(columns=["tags"])
+documents_df=pd.read_csv(f"{folder_path}documents.csv")
+ratings_df=pd.read_csv(f"{folder_path}ratings.csv")
 rs.load_data(ratings_df, documents_df)
 rs.train_collaborative_filtering()
 

@@ -17,7 +17,7 @@ class UserInteractionRequest(BaseModel):
     document_id: str | int
     timestamp: datetime
     view_time: float
-    rating: int
+    rating: int | None
 
 class MultipleNewDataRequest(BaseModel):
     updateDocuments: List[DocumentRequest]
