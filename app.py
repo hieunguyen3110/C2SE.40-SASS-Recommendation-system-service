@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 import pandas as pd
 import joblib
@@ -9,6 +10,8 @@ from response.ApiRespone import ApiResponse
 from request.LearningDataRequest import LearningDataRequest
 from request.NewDataRequest import MultipleNewDataRequest
 from model.RecommendationSystem import DocumentRecommendationSystem
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -31,7 +34,7 @@ documents_df=pd.read_csv(f"{folder_path}documents.csv")
 ratings_df=pd.read_csv(f"{folder_path}ratings.csv")
 rs.load_data(ratings_df, documents_df)
 rs.train_collaborative_filtering()
-
+chatbot_url= os.getenv("CHATBOT_URL")
 
 @app.route('/api/v1/recommendation/get-solution', methods=['POST'])
 def predict():
@@ -86,7 +89,7 @@ def predict():
 
         print(filter_student_df)
 
-        response= requests.post("http://127.0.0.1:5002/api/v1/get-solutions", json=filter_student_df)
+        response= requests.post(chatbot_url, json=filter_student_df)
 
         return jsonify(response.json())
 
