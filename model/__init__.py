@@ -1,2 +1,1 @@
-from model.AcademicRecommendationSystem import SearchBasedRecommender
 from model.RecommendationSystem import DocumentRecommendationSystem

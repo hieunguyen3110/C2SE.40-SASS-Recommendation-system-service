@@ -96,7 +96,7 @@ class DocumentRecommendationSystem:
 
         return {'precision': train_precision, 'recall': train_recall}
 
-    def get_collaborative_filtering_recommendations(self, user_id, top_n=5):
+    def get_collaborative_filtering_recommendations(self, user_id, top_n=6):
         """
         Trả về top N tài liệu được đề xuất dựa trên collaborative filtering
         """
