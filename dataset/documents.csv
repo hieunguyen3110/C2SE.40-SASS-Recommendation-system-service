@@ -1,10 +1,10 @@
 document_id,title,category,content,popularity
 DOC_00013,Giới thiệu về lập trình Java web,Lập Trình Cơ Sở,Giới thiệu về lập trình Java web,0.0
-DOC_00014,Giới thiệu về quản trị tài chính và khách sạn chương 1,Quản Trị Tài Chính Khách Sạn,Giới thiệu về quản trị tài chính và khách sạn chương 1,0.0
-DOC_00015,Giới thiệu về quản trị tài chính và khách sạn chương 4,Quản Trị Tài Chính Khách Sạn,Giới thiệu về quản trị tài chính và khách sạn chương 4,0.0
-DOC_00016,Giới thiệu về quản trị tài chính và khách sạn chương 5,Quản Trị Tài Chính Khách Sạn,Giới thiệu về quản trị tài chính và khách sạn chương 5,0.0
-DOC_00017,Giới thiệu về quản trị tài chính và khách sạn chương 6,Quản Trị Tài Chính Khách Sạn,Giới thiệu về quản trị tài chính và khách sạn chương 6,0.0
-DOC_00018,Giới thiệu về quản trị tài chính và khách sạn chương 7,Quản Trị Tài Chính Khách Sạn,Giới thiệu về quản trị tài chính và khách sạn chương 7,0.0
+DOC_00014,Giới thiệu về quản trị tài chính và khách sạn,Quản Trị Tài Chính Khách Sạn,Giới thiệu về quản trị tài chính và khách sạn,0.010465136172000001
+DOC_00015,Giới thiệu về quản trị tài chính và du lịch khách sạn,Quản Trị Tài Chính Khách Sạn,Giới thiệu về quản trị tài chính và du lịch khách sạn,0.0
+DOC_00016,Giới thiệu về quản trị tài chính và du lịch khách sạn chương 5,Quản Trị Tài Chính Khách Sạn,Giới thiệu về quản trị tài chính và du lịch khách sạn chương 5,0.01811578206564
+DOC_00017,Giới thiệu về quản trị tài chính và du lịch khách sạn chương 6,Quản Trị Tài Chính Khách Sạn,Giới thiệu về quản trị tài chính và du lịch khách sạn chương 6,0.0
+DOC_00018,Giới thiệu về quản trị tài chính và du lịch khách sạn chương 7,Quản Trị Tài Chính Khách Sạn,Giới thiệu về quản trị tài chính và du lịch khách sạn chương 8,0.0
 DOC_00019,Giới thiệu về cấu trúc tĩnh xác định 1,Kết Cấu & Tính Toán Động Cơ Đốt Trong,Giới thiệu về cấu trúc tĩnh xác định 1,0.0
 DOC_00021,Giới thiệu về cấu trúc tĩnh xác định 3,Kết Cấu & Tính Toán Động Cơ Đốt Trong,Giới thiệu về cấu trúc tĩnh xác định 3,0.0
 DOC_00022,Giới thiệu về cấu trúc tĩnh xác định 4,Kết Cấu & Tính Toán Động Cơ Đốt Trong,Giới thiệu về cấu trúc tĩnh xác định 4,0.0
@@ -16,22 +16,22 @@ DOC_00027,Giới thiệu về kiến thức cơ bản của hệ thống cấp n
 DOC_00028,Giới thiệu về kiến thức cơ bản của hệ thống cấp nước 3,Thí Nghiệm Vật Liệu Xây Dựng,Giới thiệu về kiến thức cơ bản của hệ thống cấp nước 3,0.0
 DOC_00029,Giới thiệu về kiến thức cơ bản của hệ thống cấp nước 4,Thí Nghiệm Vật Liệu Xây Dựng,Giới thiệu về kiến thức cơ bản của hệ thống cấp nước 4,0.0
 DOC_00030,Giới thiệu về kiến thức cơ bản của hệ thống cấp nước 5,Thí Nghiệm Vật Liệu Xây Dựng,Giới thiệu về kiến thức cơ bản của hệ thống cấp nước 5,0.0
-DOC_00031,Giới thiệu về kiến thức cơ bản của hệ thống cấp nước 6,Thí Nghiệm Vật Liệu Xây Dựng,Giới thiệu về kiến thức cơ bản của hệ thống cấp nước 6,0.0
+DOC_00031,Giới thiệu về kiến thức cơ bản của hệ thống cấp nước 6,Thí Nghiệm Vật Liệu Xây Dựng,Giới thiệu về kiến thức cơ bản của hệ thống cấp nước 6,0.003749847696
 DOC_00032,Giới thiệu về kiến thức cơ bản của hệ thống cấp nước 7,Thí Nghiệm Vật Liệu Xây Dựng,Giới thiệu về kiến thức cơ bản của hệ thống cấp nước 7,0.0
 DOC_00033,Giới thiệu kiến thức cơ bản về vật lý kiến trúc,Vật Lý Đại Cương CSU 1,Giới thiệu kiến thức cơ bản về vật lý kiến trúc,0.0
 DOC_00034,Giới thiệu kiến thức cơ bản về động lực học,Nguyên Lý Động Cơ Đốt Trong,Giới thiệu kiến thức cơ bản về động lực học,0.0
 DOC_00035,Giới thiệu kiến thức cơ bản về tế bào học,Sinh Học Tế Bào,Giới thiệu kiến thức cơ bản về tế bào học,0.0
-DOC_00037,Giới thiệu kiến thức cơ bản về BigData,"Hệ Phân Tán (J2EE, .NET)",Giới thiệu kiến thức cơ bản về BigData,0.0
+DOC_00037,Giới thiệu kiến thức cơ bản về BigData,"Hệ Phân Tán (J2EE, .NET)",Giới thiệu kiến thức cơ bản về BigData,0.0007652750400000001
 DOC_00038,Giới thiệu kiến thức cơ bản về Phân tích thiết kế hệ thống,Phân Tích & Thiết Kế Hệ Thống,Giới thiệu kiến thức cơ bản về Phân tích thiết kế hệ thống,0.0
 DOC_00040,tài liệu ôn tập quản lý kinh doanh,Phân Tích Hoạt Động Kinh Doanh,tài liệu ôn tập quản lý kinh doanh,0.0
-DOC_00064,Bai So 1,Đồ Án Cơ Sở 1,Bai So 1,0.0
-DOC_00068,Lịch Sử Văn Minh Thế Giới 1_Slide 1,Lịch Sử Văn Minh Thế Giới 1,Lịch Sử Văn Minh Thế Giới 1_Slide 1,0.0
-DOC_00069,NGÂN HÀNG CÂU HỎI - TỔNG QUAN HÀNH VI TỔ CHỨC,Tổng Quan Hành Vi Tổ Chức,NGÂN HÀNG CÂU HỎI - TỔNG QUAN HÀNH VI TỔ CHỨC,0.0
-DOC_00071,Software Metrics - A Rigorous and Practical Approach,Software Measurements & Analysis,Software Metrics - A Rigorous and Practical Approach,0.0
-DOC_00072,Tập bài giảng - Các Mô Hình Ra Quyết Định,Các Mô Hình Ra Quyết Định,Tập bài giảng - Các Mô Hình Ra Quyết Định,0.0
+DOC_00064,Bai So 1 - De.pdf,Đồ Án Cơ Sở 1,tài liệu môn đồ án cơ sở,0.0
+DOC_00068,Lịch Sử Văn Minh Thế Giới 1_Slide 1,Lịch Sử Văn Minh Thế Giới 1,Slide 1 môn LSVMTG 1,0.0
+DOC_00069,NGÂN HÀNG CÂU HỎI - TỔNG QUAN HÀNH VI TỔ CHỨC,Tổng Quan Hành Vi Tổ Chức,Ngân hàng câu hỏi ôn tập - TỔNG QUAN HÀNH VI TỔ CHỨC,0.0
+DOC_00071,Software Metrics - A Rigorous and Practical Approach,Software Measurements & Analysis,Sách tham khảo kiến thức môn học Software Measurements & Analysis,0.0
+DOC_00072,Tập bài giảng - Các Mô Hình Ra Quyết Định,Các Mô Hình Ra Quyết Định,Bài giảng chuyên ngành Khoa Quản trị Kinh doanh,0.0
 DOC_00073,ESSENTIALS OF MARKETING RESEARCH,Điều Nghiên Tiếp Thị,ESSENTIALS OF MARKETING RESEARCH,0.0
-DOC_00074,Bài Giảng Lớp ECO 302 - Kinh Tế Trong Quản Trị,Kinh Tế Trong Quản Trị,Bài Giảng Lớp ECO 302 - Kinh Tế Trong Quản Trị,0.0
-DOC_00075,CORPORATE FINANCIAL ANALYSIS with MICROSOFT EXCEL,Tin Học Ứng Dụng,CORPORATE FINANCIAL ANALYSIS with MICROSOFT EXCEL,0.0
+DOC_00074,Bài Giảng Lớp ECO 302 - Kinh Tế Trong Quản Trị,Kinh Tế Trong Quản Trị,Bài giảng môn học Kinh Tế Trong Quản Trị,0.0
+DOC_00075,CORPORATE FINANCIAL ANALYSIS with MICROSOFT EXCEL,Tin Học Ứng Dụng,Sách tham khảo môn học Giới Thiệu về Mô Hình Hóa Tài Chính,0.0
 DOC_00094,BAI TAP WORD NANG CAO_1,Nguyên Lý Kế Toán 2,BAI TAP WORD NANG CAO_1,0.0
 DOC_00093,on ks tin 2.pdf,Phân Tích Báo Cáo Tài Chính,tài liệu ôn tập,0.0
 DOC_00091,02. Lý thuyết về hướng đối tượng.pdf,Nguyên Lý Kế Toán 1,haha,0.0
@@ -55,3 +55,4 @@ DOC_00078,English for Information Technology 2,Anh Văn Chuyên Ngành cho Sinh 
 DOC_00096,1117_apa - viet nam,Nguyên Lý Kế Toán 2,tài liệu 1117_apa - viet nam,0.0
 DOC_00082,Bài tập TOÁN ỨNG DỤNG CHO CNTT 1 – CHƯƠNG 2+3,Toán Ứng Dụng cho Công Nghệ Thông Tin 1,Bài tập ôn tập chương 2 + 3 Toán ứng dụng cho CNTT 1,0.0
 DOC_00083,Ôn tập kết thúc học phần TOÁN ỨNG DỤNG CHO CNTT 1,Toán Ứng Dụng cho Công Nghệ Thông Tin 1,Đề cương ôn tập Toán ứng dụng cho CNTT 1,0.0
+DOC_00006,KidsLand_Test-Plan_Version_1.1.pdf,Software Testing (Verification & Validation),qưer,0.0

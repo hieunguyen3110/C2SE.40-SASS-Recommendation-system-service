@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 CORS(
     app,
-    resources={r"/api/*": {"origins": ["http://localhost:5173", "http://localhost:8088", "http://localhost:8084", "http://dtuforyou.xyz"]}},
+    resources={r"/api/*": {"origins": ["http://localhost:5173", "http://localhost:8088", "http://localhost:8084", "http://dtuforyou.xyz", "https://dtuforyou.xyz"]}},
     methods=["GET", "POST", "PUT"],
     allow_headers=["Content-Type", "Authorization"],
     supports_credentials=True,
@@ -32,7 +32,8 @@ folder_path="./dataset/"
 rs= DocumentRecommendationSystem()
 documents_df=pd.read_csv(f"{folder_path}documents.csv")
 ratings_df=pd.read_csv(f"{folder_path}ratings.csv")
-rs.load_data(ratings_df, documents_df)
+users_df = pd.read_csv(f"{folder_path}users.csv")
+rs.load_data(ratings_df, documents_df,users_df['account_id'].unique().tolist())
 rs.train_collaborative_filtering()
 chatbot_url= os.getenv("CHATBOT_URL")
 
@@ -122,7 +123,7 @@ def handle_recommend_for_user():
             return jsonify({"error": "No input data provided"}), 400
         account_id_converter= f"USER_{int(account_id):05d}"
         recommended_docs= rs.get_collaborative_filtering_recommendations(account_id_converter)
-        return ApiResponse.success(message="Multiple ratings added!",code=200,data=recommended_docs)
+        return ApiResponse.success(message="Recommend document success",code=200,data=recommended_docs)
 
     except ValidationError as e:
         return ApiResponse.error(message="Invalid data format",code=400)
