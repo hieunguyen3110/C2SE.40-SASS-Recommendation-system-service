@@ -47,11 +47,25 @@ def predict():
             return jsonify({"error": "No input data provided"}), 400
 
         learning_request= LearningDataRequest(**data)
+        dataDict = input_handler.handle_data_input(assignment_rate=learning_request.Assignment_Completion_Rate,
+                                                   exam_rate=learning_request.Exam_Score)
 
-        df_input = pd.DataFrame([{
-            k: v[0] if isinstance(v, list) else v
-            for k, v in vars(learning_request).items()
-        }])
+        print("data dict: ", dataDict)
+
+        df_dict = {}
+
+        for k,v in vars(learning_request).items():
+            if k == "Assignment_Completion_Rate":
+                value = dataDict["avg_assign_score"]
+                df_dict[k] = value
+            elif k == "Exam_Score":
+                value = dataDict["avg_exam_score"]
+                df_dict[k] = value
+            else:
+                if k != "Course_period":
+                    df_dict[k] = v[0]
+
+        df_input = pd.DataFrame([df_dict])
 
         print("Converted DataFrame:", df_input)
 
@@ -65,17 +79,10 @@ def predict():
         print("Renamed columns:", df_input.columns.tolist())
         print("Converted DataFrame:", df_input)
 
-        # rename column
-        df_input = df_input.rename(columns={
-            "Assignment_Completion_Rate": "Assignment_Completion_Rate (%)",
-            "Exam_Score": "Exam_Score (%)"
-        })
-
-        print(df_input.columns)
-
         # Handle data pre-processing
         df_processed = InputHandle.data_pre_processing(df_input)
         print("Processed DataFrame:", df_processed)
+        copy_df = df_processed.copy()
 
         # Handle feature scaling with method standardscaler
         df_feature_scale= input_handler.input_feature_scaling(df_processed)
@@ -97,8 +104,10 @@ def predict():
                 })
 
         filter_student_df = {
-                **df_input.to_dict(),
-                "Final Grade": score_student[0]
+                **copy_df.to_dict(),
+                "Final Grade": score_student[0],
+                "subject_weakens": dataDict,
+                "courses_period": [c.model_dump() for c in learning_request.Course_period]
         }
         if score_student[0] not in ["C","D"] :
             return ApiResponse.success(data="Bạn đã có sự cải thiện rõ rệt trong việc học tập. Việc chăm chỉ làm bài tập và hoàn thành các bài quiz đều đặn đang giúp bạn tiến bộ từng ngày. Cố gắng phát huy nhé!")
@@ -110,6 +119,7 @@ def predict():
         response= requests.post(uri, json=filter_student_df)
 
         return jsonify(response.json())
+        # return ApiResponse.success(message="Recommend account success",code=200,data=response)
     except ValidationError as e:
         return ApiResponse.error(message="Invalid data format",code=400)
     except Exception as e:
