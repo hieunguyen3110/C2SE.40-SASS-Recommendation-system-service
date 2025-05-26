@@ -1,12 +1,12 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 from datetime import datetime
 
 class DocumentRequest(BaseModel):
     document_id: str | int
     title: str
     category: str
-    content: str
+    content: Optional[str]
     popularity: float
 
 class UserRequest(BaseModel):
